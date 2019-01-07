@@ -1,0 +1,117 @@
+﻿
+3.Create a class named “Person” which consists of name, age, aadharnumber. Create methods getInput(), display(), canVote(), hasAadhar(). Create and handle the following Exceptions. 
+a.For age -> if you give alphabets then throw NumberFormatException 
+b.For voting -> if age is less than 18 then throw MinorCitizenException 
+c.For aadhar -> if no valid aadhar then throw NullPointerException 
+
+Script started on 2018-09-12 07:05:27+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex5##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex5#[00m$ cat Pe#rson.java
+import java.util.Scanner;
+class MinorCitizenException extends Exception
+{
+    String s1;
+    MinorCitizenException(String s2)
+    {
+	super(s2);
+	s1=s2;
+    }
+    public String tostring()
+    {
+	return s1;
+    }
+}
+class person
+{
+    String name,aadhar;
+    int age;
+    String getinput(String n, String a, String ad)
+    {
+	name=n;
+	aadhar=ad;
+	try
+	{
+	    age=Integer.parseInt(a);
+	}
+	catch(NumberFormatException e)
+	{
+	    return("Only numbers can be entered");
+        }
+	return "1";
+    }
+    void display()
+    {
+	System.out.println(name+" "+age+" "+aadhar);
+    }
+    void canVote()
+    {
+	try
+	{
+	    if(age<18)
+		throw new MinorCitizenException("Age less than 18");
+	}
+	catch(MinorCitizenException exp)
+	{
+	    System.out.println(exp);
+	}
+    }
+
+
+    String hasAadhar()
+    {
+	try
+	{
+	    if(aadhar.length()!=12 || aadhar.charAt(0)=='0')
+		throw new NullPointerException("Invalid aadhar number");
+	    return "1";
+	}
+	catch(NullPointerException f)
+	{
+	    return f;
+        }
+    }
+}
+class Person
+{
+     public static void main(String[] args)
+     {
+	 Scanner in=new Scanner(System.in);
+	 String n,a,ad,c,q;
+	 System.out.println("Enter name,age,aadhar");
+	 n=in.next();
+	 a=in.next();
+	 ad=in.next();
+	 person p=new person();
+	 c=p.getinput(n,a,ad);
+	 if(c=="1")
+	 {
+	     q=p.hasAadhar();
+	     if(q=="1")
+	     {
+		 p.display();
+		 p.canVote();
+	     }
+	     else
+		 System.out.println(q);
+	 }
+	 else
+	     System.out.println(c);
+     }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex5##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex5#[00m$ java Person
+Enter name,age,aadhar
+Ram 40 746987632546
+Ram 40 746987632546
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex5##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex5#[00m$ java Person
+Enter name,age,aadhar
+Ram 17 986354279813
+Ram 17 986354279813
+MinorCitizenException: Age less than 18
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex5##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex5#[00m$ java Person
+Enter name,age,aadhar
+Ram 46 98765324
+Invalid aadhar number
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex5##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex5#[00m$ exit
+exit
+
+Script done on 2018-09-12 07:06:18+0530
+

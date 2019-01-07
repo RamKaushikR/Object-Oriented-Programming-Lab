@@ -1,0 +1,102 @@
+﻿
+1.Write a java program that implements a multi-threaded application that has three threads. First thread generates a random integer every 1 second and if the value is even, second thread computes the square of the number and prints. If the value is odd, the third thread will print the value of cube of the number.
+
+Script started on 2018-09-22 18:32:17+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex8##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex8#[00m$ cat MultiThread.java
+import java.util.*;
+class Thread2 implements Runnable
+{
+    int i;
+    Thread2(int j)
+    {
+	i=j;
+    }
+    public void run()
+    {
+	System.out.println("Square: "+i*i);
+	System.out.println("waiting...");
+    }
+}
+class Thread3 implements Runnable
+{
+    int i;
+    Thread3(int j)
+    {
+	i=j;
+    }
+    public void run()
+    {
+	System.out.println("Cube: "+i*i*i);
+	System.out.println("waiting...");
+    }
+}
+class Thread1 implements Runnable
+{
+    int q;
+    Random rand=new Random();
+    public void run()
+    {
+	int i=0;
+	while(i<10)
+	{
+	    q=rand.nextInt(50);
+	    System.out.print("Number: "+q+" ");
+	    if(q%2==0)
+	    {
+		Thread t2=new Thread(new Thread2(q));
+		t2.start();
+	    }
+	    else
+	    {
+		Thread t3=new Thread(new Thread3(q));
+		t3.start();
+	    }
+	    i++;
+
+
+
+	    try
+	    {
+		Thread.sleep(1000);
+	    }
+	    catch(InterruptedException e)
+	    {
+		System.out.println("Main thread interrupted");
+	    }
+	}
+    }
+}
+class MultiThread
+{
+    public static void main(String[] args)
+    {
+	Thread t1=new Thread(new Thread1());
+	t1.start();
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex8##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex8#[00m$ java MultiThread
+Number: 28 Square: 784
+waiting...
+Number: 28 Square: 784
+waiting...
+Number: 17 Cube: 4913
+waiting...
+Number: 49 Cube: 117649
+waiting...
+Number: 15 Cube: 3375
+waiting...
+Number: 16 Square: 256
+waiting...
+Number: 5 Cube: 125
+waiting...
+Number: 21 Cube: 9261
+waiting...
+Number: 9 Cube: 729
+waiting...
+Number: 0 Square: 0
+waiting...
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex8##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex8#[00m$ exit
+exit
+
+Script done on 2018-09-22 18:32:48+0530
+

@@ -1,0 +1,72 @@
+﻿
+1.Design a Java interface for ADT Stack. Implement this interface using array. Provide necessary exception handling in both the implementations. 
+
+Script started on 2018-09-12 07:14:44+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex5##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex5#[00m$ cat Stack1.java
+import java.util.Scanner;
+interface Array
+{
+    public int push(int top, int val);
+    public int pop(int top);	    
+}
+class St implements Array
+{
+    int[] a = new int[10];
+    public int push(int top, int val)
+    {
+	if(top<10)
+	{
+	    top++;
+	    a[top]=val;
+	}
+	return top;
+    }
+    public int pop(int top)
+    {
+	if(top>=0)
+	    top--;
+	return top;
+    }
+    void display(int top)
+    {
+	System.out.println(a[top]);
+    }
+    void input()
+    {
+	int n,top=0,val;
+	Scanner in = new Scanner(System.in);
+	n=in.nextInt();
+	for(int i=0;i<n;i++)
+	{
+	    val=in.nextInt();
+	    top=push(top,val);
+	}
+	display(top);
+	top=pop(top);
+	display(top);
+	val=in.nextInt();
+	top=push(top,val);
+	display(top);
+    }
+}
+class Stack1
+{
+    public static void main(String[] args)
+    {
+	St s = new St();
+	s.input();
+    }
+}
+
+
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex5##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex5#[00m$ java Stack1
+5
+4 7 3 9 6
+6
+9
+8
+8
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex5##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex5#[00m$ exit
+exit
+
+Script done on 2018-09-12 07:15:11+0530
