@@ -1,0 +1,81 @@
+﻿
+2. Write a java program to perform the following operations in a file.
+a. Copy one file to another
+b. Append the contents of one file to another
+c. Delete a particular record in a file
+
+Script started on 2018-10-06 08:07:08+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex10##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex10#[00m$ cat FileOperation.java
+import java.io.*;
+import java.util.Scanner;
+public class FileOperation {
+    public static void main(String[] args) throws IOException {
+	Scanner sc = new Scanner(System.in);
+	int ch;
+	System.out.println("Enter choice\n1.Copy one file to another including 	text 2.Delete a record in a File");
+	ch = sc.nextInt();
+	switch (ch) {
+	case 1:
+	    FileInputStream Fread = new FileInputStream("Hello.txt");
+	    FileOutputStream Fwrite = new FileOutputStream("Hello1.txt");
+	    System.out.println("File is Copied");
+	    int c;
+	    while ((c = Fread.read()) != -1)
+		Fwrite.write((char) c);
+	    Fread.close();
+	    Fwrite.close();
+	    break;
+	case 2:
+	    PrintWriter pw = new PrintWriter("Hello1.txt");
+	    BufferedReader br1 = new BufferedReader(new FileReader("Hello1.txt"));
+	    String line1 = br1.readLine();
+	    while (line1 != null) {
+		boolean flag = false;
+		BufferedReader br2 = new BufferedReader(new 			FileReader("Hello.txt"));
+		String line2 = br2.readLine();
+		while (line2 != null) {
+		    if (line1.equals(line2)) {
+			flag = true;
+			break;
+		    }
+		    line2 = br2.readLine();
+		}
+		if (!flag)
+		    pw.println(line1);
+		line1 = br1.readLine();
+	    }
+	    pw.flush();
+	    br1.close();
+	    pw.close();
+	    System.out.println("File operation performed successfully");
+	    break;
+	default:
+	    System.out.println("Enter correct choice");
+	    break;
+	}
+    }
+}
+
+
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex10##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex10#[00m$ cat Hello.txt
+This is the sample file.
+My name is Ram Kaushik.
+I am at SSN.
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex10##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex10#[00m$ java FileOperation
+Enter choice
+1.Copy one file to another including text 2.Delete a record in a File
+1
+File is Copied
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex10##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex10#[00m$ cat Hello1.txt
+This is the sample file.
+My name is Ram Kaushik.
+I am at SSN.
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex10##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex10#[00m$ java FileOperation
+Enter choice
+1.Copy one file to another including text 2.Delete a record in a File
+2
+File operation performed successfully
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex10##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex10#[00m$ exit
+exit
+
+Script done on 2018-10-06 08:07:53+0530

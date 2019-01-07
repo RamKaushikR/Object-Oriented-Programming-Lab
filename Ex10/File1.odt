@@ -1,0 +1,50 @@
+﻿
+1. Write a java program that reads a file name from the user,displays information about whether the file exists, whether the file is readable, or writable, the type of file and the 
+length of the file in bytes.
+
+Script started on 2018-10-06 07:58:33+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex10##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex10#[00m$ cat FileEg.java
+import java.io.File;
+import java.nio.file.Files;
+import java.util.Scanner;
+public class FileEg {
+    public static void main(String[] a)
+    {
+	System.out.println("Enter the file name");
+	Scanner sc = new Scanner(System.in);
+	String s=sc.next();
+	File fin = new File(s);
+	if(fin.exists()) {
+	    System.out.println("Exists");
+	    if(fin.canRead())
+		System.out.println("Readable");
+	    else
+		System.out.println("Cannot read");
+	    if(fin.canWrite())
+		System.out.println("Can write");
+	    else
+		System.out.println("Cannot write");
+	    System.out.println(fin.length());
+	}
+	else
+	    System.out.println("Doesn't exist");
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex10##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex10#[00m$ java FileEg
+Enter the file name
+FileEg.java
+Exists
+Readable
+Can write
+635
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex10##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex10#[00m$ java FileEg
+Enter the file name
+FileEg.class
+Exists
+Readable
+Can write
+1029
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex10##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex10#[00m$ exit
+exit
+
+Script done on 2018-10-06 07:59:14+0530

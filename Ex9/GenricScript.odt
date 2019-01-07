@@ -1,0 +1,81 @@
+﻿1.Write a java program to find the maximum value from the given type of elements using a generic function. 
+
+Script started on 2018-09-22 18:22:12+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex9##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex9#[00m$ cat Generic.java
+class Generic{
+    public<T extends Comparable<T>> T max(T[] a){
+	T b=a[0];
+	for(int i=1;i<a.length;i++){
+	    if(a[i].compareTo(b)>0)
+		b=a[i];
+	}
+	return b;
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex9##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex9#[00m$ cat MaxVal.java
+import java.util.Scanner;
+class MaxVal{
+    public static void main(String[] args){
+	Generic g=new Generic();
+	Scanner in=new Scanner(System.in);
+	System.out.println("Enter the data type 1.Integer 2.Double 3.String");
+	int c=in.nextInt();
+	System.out.println("Enter the length");
+	int n=in.nextInt();
+	if(c==1){
+	    Integer[] a=new Integer[n];
+	    System.out.println("Enter the inputs");
+	    for(int i=0;i<n;i++)
+		a[i]=in.nextInt();
+	    int r=g.<Integer>max(a);
+	    System.out.println("Max: "+r);
+	}
+	else if(c==2){
+	    Double[] b=new Double[n];
+	    System.out.println("Enter the inputs");
+	    for(int i=0;i<n;i++)
+		b[i]=in.nextDouble();
+	    double z=g.<Double>max(b);
+	    System.out.println("Max: "+z);
+	}
+	else{
+	    String[] s=new String[n];
+	    System.out.println("Enter the inputs");
+	    for(int i=0;i<n;i++)
+		s[i]=in.next();
+	    String z=g.<String>max(s);
+	    System.out.println("Max: "+z);
+	}
+    }   
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex9##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex9#[00m$ java MaxVal
+Enter the data type 1.Integer 2.Double 3.String
+1
+Enter the length
+3
+Enter the inputs
+5 7 3
+Max: 7
+
+
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex9##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex9#[00m$ java MaxVal
+Enter the data type 1.Integer 2.Double 3.String
+2
+Enter the length
+3
+Enter the inputs
+4.14 4.146 4.139
+Max: 4.146
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex9##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex9#[00m$ java MaxVal
+Enter the data type 1.Integer 2.Double 3.String
+3
+Enter the length
+3
+Enter the inputs
+Hi Bye Hello
+Max: Hi
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex9##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex9#[00m$ exit
+exit
+
+Script done on 2018-09-22 18:22:57+0530
+
