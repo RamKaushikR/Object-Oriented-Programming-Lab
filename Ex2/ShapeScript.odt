@@ -1,0 +1,125 @@
+﻿
+2.Create a package named mypack.shapes. Create some classes 
+in the package representing some common geometric shapes 
+like Square, Triangle, Circle and so on. The classes should contain the area and perimeter methods in them. Use this 
+package to find area and perimeter of different shapes as 
+chosen by the user. 
+
+Script started on 2018-08-11 13:39:14+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2#[00m$ cd shape
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2/shape##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2/shape#[00m$ cat Square.java
+package shape;
+public class Square
+{
+    public double area(double s)
+    {
+	return s*s;
+    }
+    public double peri(double s)
+    {
+	return 4.0*s;
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2/shape##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2/shape#[00m$ cat Triangle.java
+package shape;
+import java.lang.Math;
+public class Triangle
+{
+    public double area(double a, double b, double c, double s)
+    {
+	return Math.sqrt(s*(s-a)*(s-b)*(s-c));
+    }
+    public double peri(double a, double b, double c)
+    {
+	return a+b+c;
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2/shape##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2/shape#[00m$ cat Circle.java
+package shape;
+public class Circle
+{
+    public double area(double r)
+    {
+	return 3.14*r*r;
+    }
+    public double peri(double r)
+    {
+	return 2*3.14*r;
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2/shape##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2/shape#[00m$ cd ..
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2#[00m$ cat Shape.java
+import shape.Square;
+import shape.Circle;
+import shape.Triangle;
+import java.util.Scanner;
+
+class Shape
+{
+    public static void main(String[] args)
+    {
+	Square s=new Square();
+	Triangle t=new Triangle();
+	Circle c=new Circle();
+	Scanner in=new Scanner(System.in);
+	System.out.println("Enter the choice S,T or C");
+	String ch=in.next();
+	double ar,pe;
+	switch(ch)
+	{
+	    case "S":
+		System.out.println("Enter the side");
+		double a=in.nextDouble();
+	        ar=s.area(a);
+		pe=s.peri(a);
+		System.out.println("Perimeter="+pe+" Area="+ar);
+		break;
+	    case "T":
+		System.out.println("Enter the sides");
+		double p,b,q;
+		p=in.nextDouble();
+		b=in.nextDouble();
+		q=in.nextDouble();
+		pe=t.peri(p,b,q);
+		ar=t.area(p,b,q,pe);
+		System.out.println("Perimeter="+pe+" Area="+ar);
+		break;
+            case "C":
+		System.out.println("Enter the radius");
+		double r=in.nextDouble();
+	        ar=c.area(r);
+		pe=c.peri(r);
+		System.out.println("Perimeter="+pe+" Area="+ar);
+		break;
+	    default:
+		System.out.println("Invalid choice");
+		break;
+	}
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2#[00m$ java Shape
+Enter the choice S,T or C
+S
+Enter the side
+4
+Perimeter=16.0 Area=16.0
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2#[00m$ java Shape
+Enter the choice S,T or C
+T
+Enter the sides
+1 2 3
+Perimeter=6.0 Area=18.973665961010276
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2#[00m$ java Shape
+Enter the choice S,T or C
+C
+
+
+
+Enter the radius
+4
+Perimeter=25.12 Area=50.24
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2#[00m$ exit
+exit
+
+Script done on 2018-08-11 13:40:21+0530
+

@@ -1,0 +1,149 @@
+﻿
+2.Develop a java application with Employee class with Emp_name, Emp_id, Address, Mail_id, Mobile_no as members. Inherit the classes, Programmer, Assistant Professor, Associate Professor 
+and Professor from employee class. Add Basic Pay (BP) as the member of all the inherited classes with 97% of BP as DA, 10% 
+of BP as HRA, 12% of BP as PF, 0.1% of BP for staff club fund. Generate pay slips for the employees with their gross and net salary.
+
+Script started on 2018-08-25 18:27:54+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex3##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex3#[00m$ cat EmpInher.java
+import java.util.Scanner;
+class Employee
+{
+    String name,address,mailid,mob;
+    int empid;
+    double bp,da,hra,pf,scf,gs,ns;
+    void assign()
+    {
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter the name, id, address, mail id & mobile no.");
+	name=in.next();
+	empid=in.nextInt();
+	address=in.next();
+	mailid=in.next();
+	mob=in.next();
+    }
+    void calc(double b)
+    {
+	bp=b;
+	da=0.94*b;
+	hra=0.1*b;
+	pf=0.12*b;
+	scf=0.001*b;
+	gs=bp+da+hra;
+	ns=gs-pf;
+    }
+    void print()
+    {
+	System.out.println("Name:"+name+" ID:"+empid+" Address:"+address+"    	Mail:"+mailid+" Mobile:"+mob);
+	System.out.println("BP:"+bp+" DA:"+da+" HRA:"+hra+" PF:"+pf+" SCF:"+scf
+	+" Gross:"+gs+" Net:"+ns);
+    }
+}
+class Programmer extends Employee
+{
+    double bp;
+    void assign()
+    {
+	super.assign();
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter the basic pay");
+	bp=in.nextDouble();
+	calc(bp);
+	print();
+    }
+}
+
+
+
+class AssProf extends Employee
+{
+    double bp;
+    void assign()
+    {
+	super.assign();
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter the basic pay");
+	bp=in.nextDouble();
+	calc(bp);
+	print();
+    }
+}
+class Aprof extends Employee
+{
+    double bp;
+    void assign()
+    {
+	super.assign();
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter the basic pay");
+	bp=in.nextDouble();
+	calc(bp);
+	print();
+    }
+}
+class Professor extends Employee
+{
+    double bp;
+    void assign()
+    {
+	super.assign();
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter the basic pay");
+	bp=in.nextDouble();
+	calc(bp);
+	print();
+    }
+}
+class EmpInher
+{
+    public static void main(String[] args)
+    {
+	String role;
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter the role");
+	role=in.next();
+	if(role.equals("Programmer"))
+	{
+	    Programmer p = new Programmer();
+	    p.assign();
+	}
+	else if(role.equals("AssistantProf"))
+	{
+	    AssProf a = new AssProf();	
+	    a.assign();
+	}
+	else if(role.equals("AssociateProf"))
+	{
+	    Aprof a = new Aprof();
+	    a.assign();
+	}
+
+
+	else if(role.equals("Professor"))
+	{
+	    Professor p = new Professor();
+	    p.assign();
+	}
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex3##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex3#[00m$ java EmpInher
+Enter the role
+Programmer
+Enter the name, id, address, mail id & mobile no.
+Ram 100 Chennai abc@gmail.com 9876543210
+Enter the basic pay
+100000
+Name:Ram ID:100 Address:Chennai Mail:abc@gmail.com Mobile:9876543210
+BP:100000.0 DA:94000.0 HRA:10000.0 PF:12000.0 SCF:100.0 Gross:204000.0 Net:192000.0
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex3##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex3#[00m$ java EmpInher
+Enter the role
+AssistantProf
+Enter the name, id, address, mail id & mobile no.
+Kaushik 200 Chennai qrs@gmail.com 1234567890
+Enter the basic pay
+150000
+Name:Kaushik ID:200 Address:Chennai Mail:qrs@gmail.com Mobile:1234567890
+BP:150000.0 DA:141000.0 HRA:15000.0 PF:18000.0 SCF:150.0 Gross:306000.0 Net:288000.0
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex3##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex3#[00m$ exit
+exit
+
+Script done on 2018-08-25 18:29:13+0530

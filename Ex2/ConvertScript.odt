@@ -1,0 +1,145 @@
+﻿
+1.Develop a java application to implement currency converter (Dollar to INR, EURO to INR, Yen to INR and vice versa), 
+distance converter(meter to KM, miles to KM and vice versa), 
+time converter (hours to minutes, seconds and vice versa) 
+using packages. 
+
+Script started on 2018-08-11 11:22:28+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2#[00m$ cd pack1
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2/pack1##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2/pack1#[00m$ cat Curr.java
+package pack1;
+public class Curr
+{
+    public double convert(double n, int c)
+    {
+	if(c==1)
+	    return (n*70.0);
+	else if(c==2)
+	    return (n/70.0);
+	else if(c==3)
+	    return (n*84.0);
+	else if(c==4)
+	    return (n/84.0);
+	else if(c==5)
+	    return (n*0.6);
+	else if(c==6)
+	    return (n/0.6);
+	return 0.0;
+    }
+}
+
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2/pack1##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2/pack1#[00m$ cat Time.java
+package pack1;
+public class Time
+{
+    public double convert(double n, int c)
+    {
+	if(c==1)
+	    return (n*60.0);
+	else if(c==2)
+	    return (n/60.0);
+	else if(c==3)
+	    return (n*3600.0);
+	else if(c==4)
+	    return (n/3600.0);
+	else if(c==5)
+	    return (n*60.0);
+	else if(c==6)
+	    return (n/60.0);
+	return 0.0;
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2/pack1##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2/pack1#[00m$ cat Dist.java
+package pack1;
+public class Dist
+{
+    public double convert(double n,int c)
+    {
+
+
+	if(c==1)
+	    return (n*1000.0);
+	else if(c==2)
+	    return (n/1000.0);
+	else if(c==3)
+	    return (n/1.6);
+	
+
+	else if(c==4)
+	    return (n*1.6);
+	return 0.0;
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2/pack1##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2/pack1#[00m$ cd ..
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2#[00m$ cat Convert.java
+import pack1.Curr;
+import pack1.Dist;
+import pack1.Time;
+import java.util.Scanner;
+class Convert
+{
+    public static void main(String[] args)
+    {
+	Curr c=new Curr();
+	Dist d=new Dist();
+	Time t=new Time();
+	Scanner in=new Scanner(System.in);
+	System.out.println("Enter the choice C,D or T");
+	String q=in.next();
+	System.out.println("Enter the value to be converted");
+	double n=in.nextDouble();
+	System.out.println("Enter the choice 1-6 for C&T, 1-4 for D");
+	int v=in.nextInt();
+	double r;
+	switch(q)
+	{
+	    case "C":
+		r=c.convert(n,v);
+		System.out.println("Converted value="+r);
+		break;
+	    case "D":
+		r=d.convert(n,v);
+		System.out.println("Converted value="+r);
+		break;
+	    case "T":
+		r=t.convert(n,v);
+		System.out.println("Converted value="+r);
+		break;
+	    default:
+		System.out.println("Invalid choice");
+		break;
+	}
+    }
+}
+	
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2#[00m$ java Convert
+Enter the choice C,D or T
+C
+
+
+
+Enter the value to be converted
+70.0
+Enter the choice 1-6 for C&T, 1-4 for D
+1
+Converted value=4900.0
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2#[00m$ java Convert
+Enter the choice C,D or T
+D
+Enter the value to be converted
+100.0
+Enter the choice 1-6 for C&T, 1-4 for D
+4
+Converted value=160.0
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2#[00m$ java Convert
+Enter the choice C,D or T
+T
+Enter the value to be converted
+4800.0
+Enter the choice 1-6 for C&T, 1-4 for D
+2
+Converted value=80.0
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex2##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex2#[00m$ exit
+exit
+
+Script done on 2018-08-11 11:25:28+0530

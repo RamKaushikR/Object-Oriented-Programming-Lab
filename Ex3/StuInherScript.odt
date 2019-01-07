@@ -1,0 +1,181 @@
+﻿
+3.Write a java program with a class named ‘Person’ which 
+consists of name, age, DOB and address. Have functions to get input and calculate_performance. Derive a class named 
+‘Student’ from ‘Person’ class with additional members like department, marks, extra-curricular. Calculate performance of Student (Outstanding, Excellent, Good, Fair) based on the grade and extra-curricular activities. Derive a class named ‘Professor’ from ‘Person’ with additional members like department, number of publications and funded projects. Calculate performance of Professor based on the number of publications and funded projects. In main get ‘n’ number of Person’s information and calculate the performance.
+
+Script started on 2018-08-25 18:33:17+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex3##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex3#[00m$ cat StuInher.java
+import java.util.Scanner;
+class Person
+{
+    String name,address,dob;
+    int age;
+    void assign()
+    {
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter the name, address, date of birth(dd/mm/yyyy) & 	age");
+	name=in.next();
+	address=in.next();
+	dob=in.next();
+	age=in.nextInt();
+    }
+    void calc_perf()
+    {
+	;
+    }
+    void display()
+    {
+	;
+    }
+}
+class Student extends Person
+{
+    String dept,ec,g,perf;
+    double[] d=new double[3];
+    void assign()
+    {	
+	Scanner in=new Scanner(System.in);
+        super.assign();
+	System.out.println("Enter the department");
+   	dept=in.next();
+	double s=0.0;
+	System.out.println("Enter the 3 marks");
+	for(int i=0;i<3;i++)
+	{
+ 	    d[i]=in.nextDouble();
+ 	    s+=d[i];
+        }
+	s=s/3;
+ 	if(s>90)
+            g="A";
+
+	else if (s>80)
+	    g="B";
+	else if (s>70)
+	    g="C";
+	else 
+	    g="D";
+	System.out.println("Enter extra-curricular grade");
+        ec=in.next();
+    }
+    void calc_perf()
+    {
+	if(g.equals("A") && ec.equals("A"))
+	    perf="Outstanding";
+	else if(g.equals("D") || ec.equals("D"))
+	    perf="Fair";
+	else if(g.equals("C") || ec.equals("C"))
+	    perf="Good";
+	else if(g.equals("B") || ec.equals("B"))
+	    perf="Excellent";
+    }
+    void display()
+    {
+	System.out.println("Name:"+name+" Address:"+address+" DOB:"+dob+" 	Age:"+age);
+	System.out.println("Department:"+dept+" Grade:"+g+" Extra-curricular 	grade:"+ec+" Performance:"+perf);
+    }
+}
+class Prof extends Person
+{
+    String dept,perf;
+    int np,nf;
+    void assign()
+    {	
+	Scanner in=new Scanner(System.in);
+        super.assign();
+	System.out.println("Enter the department, no. of publications & no. of 	funded projects");
+   	dept=in.next();
+	np=in.nextInt();
+	nf=in.nextInt();
+    }
+    void calc_perf()
+    {
+	if(np>10 && nf>4)
+	    perf="Outstanding";
+	else if(np>6 && nf>2)
+	    perf="Excellent";
+	else if(np>4 && nf>1)
+	    perf="Good";
+	else if(np>2 && nf==0)
+	    perf="Fair";
+    }
+    void display()
+    {
+	System.out.println("Name:"+name+" Address:"+address+" DOB:"+dob+" 	Age:"+age);
+	System.out.println("Department:"+dept+" Publications:"+np+" 	Projects:"+nf+" Performance:"+perf);
+    }
+}
+
+
+
+class StuInher
+{
+    public static void main(String[] args)
+    {
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter the no. of people");
+	int n=in.nextInt();
+	Person[] p = new Person[n];
+	String role;
+	for(int i=0;i<n;i++)
+	{
+	    System.out.println("Enter the role");
+	    role=in.next();
+	    if(role.equals("Student"))
+	    {
+		p[i]=new Student();
+		p[i].assign();
+		p[i].calc_perf();
+		p[i].display();
+	    }
+	    else if(role.equals("Professor"))
+	    {
+		p[i]=new Prof();
+		p[i].assign();
+		p[i].calc_perf();
+		p[i].display();
+	    }
+	}
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex3##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex3#[00m$ java StuInher
+Enter the no. of people
+3
+Enter the role
+Student
+Enter the name, address, date of birth(dd/mm/yyyy) & age
+Ram Chennai 19/06/1999 19
+Enter the department
+CSE
+Enter the 3 marks
+100 100 100
+Enter extra-curricular grade
+A
+Name:Ram Address:Chennai DOB:19/06/1999 Age:19
+Department:CSE Grade:A Extra-curricular grade:A Performance:Outstanding
+Enter the role
+Professor
+Enter the name, address, date of birth(dd/mm/yyyy) & age
+Kaushik Chennai 05/06/1960 58
+Enter the department, no. of publications & no. of funded projects
+ECE 6 4
+Name:Kaushik Address:Chennai DOB:05/06/1960 Age:58
+Department:ECE Publications:4 Projects:6 Performance:Good
+Enter the role
+Student
+Enter the name, address, date of birth(dd/mm/yyyy) & age
+RK Chennai 01/01/2000 18
+Enter the department
+Mech
+Enter the 3 marks
+90 80 75
+
+
+Enter extra-curricular grade
+B
+Name:RK Address:Chennai DOB:01/01/2000 Age:18
+Department:Mech Grade:B Extra-curricular grade:B Performance:Excellent
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex3##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex3#[00m$ exit
+exit
+
+Script done on 2018-08-25 18:35:15+0530
