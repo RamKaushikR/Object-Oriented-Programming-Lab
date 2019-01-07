@@ -1,0 +1,48 @@
+﻿
+4.Write a java program to find whether the given 
+number is Armstrong number or not. 
+
+Script started on 2018-08-05 13:52:11+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ cat Armstrong#.java
+import java.util.Scanner;
+import java.lang.Math;
+class Armstrong
+{
+    public static void main(String[] args)
+    {
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter the number");
+	int n=in.nextInt();
+	int d=0,s=0,p=n,q=n;
+	while(p>0)
+	{
+	    d++;
+	    p/=10;
+	}
+	while(n>0)
+	{
+	    s+=Math.pow(n%10,d);
+	    n/=10;
+	}
+	if(s==q)
+	    System.out.println("Armstrong");
+	else
+	    System.out.println("Not Armstrong");
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ java Armstrong
+Enter the number
+153
+Armstrong
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ java Armstrong
+Enter the number
+1634
+Armstrong
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ java Armstrong
+Enter the number
+127
+Not Armstrong
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ exit
+exit
+
+Script done on 2018-08-05 13:53:42+0530

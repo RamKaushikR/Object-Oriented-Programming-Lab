@@ -1,0 +1,32 @@
+﻿
+3.Write a java program to find the sum of first ‘n’ 
+natural numbers. 
+
+Script started on 2018-08-05 14:09:23+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ cat NaturalNo.java
+import java.util.Scanner;
+class NaturalNo
+{
+    public static void main(String[] args)
+    {
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter the number");
+	int a=in.nextInt();
+	int s=0;
+	for(int i=1;i<=a;i++)
+	    s+=i;
+	System.out.println("Sum of first "+a+" natural no.s ="+s);
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ java NaturalNo
+Enter the number
+6
+Sum of first 6 natural no.s =21
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ java NaturalNo
+Enter the number
+8
+Sum of first 8 natural no.s =36
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ exit
+exit
+
+Script done on 2018-08-05 14:10:33+0530

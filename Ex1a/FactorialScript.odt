@@ -1,0 +1,43 @@
+﻿
+2.Write a java program to find the factorial of the 
+given number. 
+
+Script started on 2018-08-05 14:05:47+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ cat Factorial.java
+import java.util.Scanner;
+class Factorial
+{
+    public static void main(String[] args)
+    {
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter the number");
+	int f=in.nextInt();
+	int i=2,p=1;
+	if(f<0)
+	    System.out.println("Invalid");
+	else{
+	    while(i<=f)
+	    {
+	        p*=i;
+	        i++;
+	    }
+	    System.out.println(f+" factorial = "+p);
+	}
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ java Factorial
+Enter the number
+5
+5 factorial = 120
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ java Factorial
+Enter the number
+-1
+Invalid
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ java Factorial
+Enter the number
+0
+0 factorial = 1
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ exit
+exit
+
+Script done on 2018-08-05 14:06:17+0530

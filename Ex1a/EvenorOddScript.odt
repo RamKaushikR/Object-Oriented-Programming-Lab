@@ -1,0 +1,32 @@
+﻿
+1.Write a java program to check whether the given 
+number is odd or even. 
+
+Script started on 2018-08-05 14:02:21+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ cat EvenorOdd.java
+import java.util.Scanner;
+class EvenorOdd
+{
+    public static void main(String[] args)
+    {
+	Scanner in = new Scanner(System.in);
+    	System.out.println("Enter the number");
+	int b=in.nextInt();
+	if(b%2==0)
+    	    System.out.println(b+" is even");
+	else
+	    System.out.println(b+" is odd");
+    }
+}
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ java EvenorOdd
+Enter the number
+5
+5 is odd
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ java EvenorOdd
+Enter the number
+50
+50 is even
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ exit
+exit
+
+Script done on 2018-08-05 14:02:48+0530

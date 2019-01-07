@@ -1,0 +1,112 @@
+﻿
+5.Write a java program to create a class named ‘Student’ 
+with name, id, dept, 3 marks as data members. Write 
+function to assign the inputs, calculate grade, display 
+and search.
+
+Script started on 2018-08-05 14:20:36+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ cat Student.java
+import java.util.Scanner;
+class Stu
+{
+    int id;
+    String name,dept;
+    float avg;
+    int[] mark = new int[3];
+    void assign(int id, int[] mark, String name, String dept)
+    {
+	int s=0;
+	this.id=id;
+	for(int i=0;i<3;i++)
+	{
+	    this.mark[i]=mark[i];
+	    s+=mark[i];
+	}
+	this.name=name;
+	this.dept=dept;
+	avg=(float) s/3;
+    }
+    boolean search(int id)
+    {
+	if(this.id==id)
+	    return true;
+	return false;
+    }
+    void display()
+    {
+	System.out.println(id+" "+name+" "+dept);
+	System.out.println(mark[0]+" "+mark[1]+" "+mark[2]+" "+avg);
+    }
+}
+class Student
+{
+    static int id,mark[];
+    static String name,dept;
+    public static void main(String[] args)
+    {
+	Scanner in=new Scanner(System.in);
+	Stu[] s;
+	int n;
+	System.out.println("Enter no. of students");
+	n=in.nextInt();
+	s=new Stu[n];
+	for(int i=0;i<n;i++)
+	{
+	    System.out.println("Enter the id");
+	    s[i]=new Stu();
+	    id=in.nextInt();
+	    mark=new int[3];
+	    System.out.println("Enter the name");
+	    name=in.next();
+	    System.out.println("Enter the department");
+	    dept=in.next();
+
+	    System.out.println("Enter the marks");
+	    for(int j=0;j<3;j++)
+		mark[j]=in.nextInt();
+	    s[i].assign(id,mark,name,dept);
+	    int q;
+	    String d;
+	    System.out.println("Enter id to search");
+	    q=in.nextInt();
+	    boolean ins;
+	    ins=s[i].search(q);
+	    s[i].display();
+	    System.out.println(ins);
+	}
+    }
+}
+	    
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ java Student
+Enter no. of students
+2
+Enter the id
+10
+Enter the name
+Ram
+Enter the department
+CSE
+Enter the marks
+100 98 97
+Enter id to search
+10
+10 Ram CSE
+100 98 97 98.333336
+true
+Enter the id
+20
+Enter the name
+Kaushik
+Enter the department
+ECE
+Enter the marks
+99 98 96
+Enter id to search
+21
+20 Kaushik ECE
+99 98 96 97.666664
+false
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1a##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1a#[00m$ exit
+exit
+
+Script done on 2018-08-05 14:21:29+0530
