@@ -1,0 +1,128 @@
+﻿
+3.Develop a Java application to generate Electricity 
+bill. Create a class with the following members: 
+Consumer no., consumer name, previous month reading, 
+current month reading, type of EB connection 
+(i.e domestic or commercial). Compute the bill amount 
+using the following tariff.If the type of the EB connection is domestic, calculate the amount to be paid as follows: 
+•First 100 units - Rs. 1 per unit 
+•101-200 units - Rs. 2.50 per unit 
+•201 -500 units - Rs. 4 per unit 
+•501 units - Rs. 6 per unit 
+If the type of the EB connection is commercial, calculate 
+the amount to be paid as follows: 
+•First 100 units - Rs. 2 per unit 
+•101-200 units - Rs. 4.50 per unit 
+•201 -500 units - Rs. 6 per unit 
+•501 units - Rs. 7 per unit 
+
+Script started on 2018-08-05 14:34:10+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1b##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1b#[00m$ exit####java ElectricityBill #####################cat ElectricityBill.java
+import java.util.Scanner;
+class EB
+{
+    private int cno,pmr,cmr;
+    private float total;
+    private String cname,ctype;
+    void assign(int a, String e, int b, int c, String f)
+    {
+	cno=a;
+	pmr=b;
+	cmr=c;
+	cname=e;
+	ctype=f;
+    }
+    void domestic()
+    {
+	int d=cmr-pmr;
+	if(d<101)
+	    total=(float) d;
+   	else if(d<201)
+	{
+	    total=(float) (d-100)*5;
+       	    total/=2;
+	    total+=100.0;
+	}
+	else if(d<501)
+	    total=(float) 100+250+(d-200)*4;
+	else
+	    total=(float) 100+250+1200+(d-500)*6;
+    }
+    void commercial()
+    {
+	int d=cmr-pmr;
+	if(d<101)
+	    total=(float) d*2;
+   	else if(d<201)
+	{
+	    total=(float) (d-100)*9;
+
+	    total/=2;
+	    total+=200.0;
+	}
+	else if(d<501)
+	    total=(float) 200+450+(d-200)*6;
+	else
+	    total=(float) 200+450+1800+(d-500)*7;
+    }
+    
+    void display()
+    {
+	System.out.println(cno+" "+cname+" "+pmr+" "+cmr+" "+ctype+" "+total);
+    }
+}
+class ElectricityBill
+{
+    public static void main(String[] args)
+    {
+	Scanner in = new Scanner(System.in);
+	EB e=new EB();
+	System.out.println("Enter consumer no.");
+	int b=in.nextInt();
+	System.out.println("Enter consumer name");
+	String a=in.next();
+	System.out.println("Enter previous month reading");
+	int c=in.nextInt();
+	System.out.println("Enter current month reading");
+	int d=in.nextInt();
+	System.out.println("Enter consumer type");
+	String f=in.next();
+	e.assign(b,a,c,d,f);
+	if(a.equals("Domestic"))
+	    e.domestic();
+	else 
+	    e.commercial();
+	e.display();
+    }
+}
+	   
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1b##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1b#[00m$ [3Pjava ElectricityBill 
+Enter consumer no.
+Ram# ## ## #123
+Enter consumer name
+Ram
+Enter previous month reading
+201
+Enter current month reading
+322
+Enter consumer type
+Domestic
+123 Ram 201 322 Domestic 294.5
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1b##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1b#[00m$ java ElectricityBill 
+Enter consumer no.
+100
+Enter consumer name
+Kaushik
+Enter previous month reading
+200
+Enter current month reading
+400
+Enter consumer type
+
+Commercial
+100 Kaushik 200 400 Commercial 650.0
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1b##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1b#[00m$ exit
+exit
+
+Script done on 2018-08-05 14:34:46+0530
+

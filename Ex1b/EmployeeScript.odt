@@ -1,0 +1,169 @@
+﻿
+
+5.Write a java program to create a class named ‘Employee’ 
+with name, id, designation, years-of-experience, basicpay, 
+DA, HRA, LIC, PF andno. of hours worked. Write functions to calculate the gross pay and net pay. 
+•If the designation is “Intern” then the salary can 
+be calculated based on working hours. 
+Gross salary=no.of hours worked*hourly wage+DA as 2000+HRA as 1000 
+Deductions=LIC premium amount (if employee opted for that) + PF as 500 
+Net salary= Gross salary – Deductions 
+•If the designation is “Manager” then 
+Gross salary=Basicpay+DA as 40% of basicpay+HRA as 10% of basicpay 
+Deductions=LIC premium amount (if employee opted for that) + PF as 
+8% of basicpay 
+Net salary= Gross salary – Deductions 
+•If the designation is “others – Trainee, Analyst, Software engineer, 
+TeamLead” then 
+Gross salary=Basicpay+DA as 30% of basicpay+HRA as 10% of basicpay 
+Deductions=LIC premium amount (if employee opted for that) + PF as 8% 
+of basicpay 
+Net salary= Gross salary – Deductions 
+•Calculate the Payroll for ‘n’ employees and display the salary 
+details for all employees. 
+•Prepare the payslip for a particular employee. 
+•Promote a particular employee based on the years of experience. 
+
+Script started on 2018-08-06 19:03:24+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1b##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1b#[00m$ cat Employee.java
+import java.util.Scanner;
+class Emp
+{
+    String name,des;
+    int id,yoe,nhw,hw;
+    double bp,da,hra,lic,pf,gs,de,ns;
+    void assign(String n, int i, String d, int y, double b, double da, double h, double l, double p, int nh, int ho)
+    {
+	name=n;
+	id=i;
+	des=d;
+	yoe=y;
+	bp=b;
+	this.da=da;
+	hra=h;
+	lic=l;
+	pf=p;
+	nhw=nh;
+	hw=ho;
+    }
+    void intern()
+    {
+	gs=(double) (nhw*hw)+3000;
+	de=(double) lic+500;
+	ns=gs-de;
+    }
+    void manager()
+    {
+	gs=bp*1.5;
+	de=(double) lic+(8*bp/100);
+
+	ns=gs-de;
+    }
+    void other()
+    {
+	gs=bp*1.4;
+	de=(double) lic+(8*bp/100);
+	ns=gs-de;
+    }
+    void display()
+    {
+	System.out.println(name+" "+id+" "+des+" "+yoe);
+	System.out.println(bp+" "+da+" "+hra+" "+lic+" "+pf+" "+" "+nhw);
+	System.out.println(gs+" "+de+" "+ns);
+    }
+}
+class Employee
+{
+    public static void main(String[] args)
+    {
+	Scanner in=new Scanner(System.in);
+	Emp[] e;
+	System.out.println("Enter no. of employees");
+	int n=in.nextInt();
+	e=new Emp[n];
+	for(int i=0;i<n;i++)
+	{
+	    int id,yoe,nhw,hw;
+	    String name,des;
+	    double bp,lic;
+	    System.out.println("Enter name");
+	    name=in.next();
+	    System.out.println("Enter id");
+	    id=in.nextInt();
+	    System.out.println("Enter designation");
+	    des=in.next();
+	    System.out.println("Enter years of experience");
+	    yoe=in.nextInt();
+	    System.out.println("Enter basic pay");
+	    bp=in.nextDouble();
+	    System.out.println("Enter lic");
+	    lic=in.nextDouble();
+	    System.out.println("Enter no. of hours worked if intern otherwise 0");
+	    nhw=in.nextInt();
+	    e[i]=new Emp();
+	    if(des.equals("Intern"))
+	    {
+		System.out.println("Enter hourly wage");
+		hw=in.nextInt();
+		e[i].assign(name,id,des,yoe,bp,2000.0,1000.0,lic,500.0,nhw,hw);
+		e[i].intern();
+	    }
+	    else if(des.equals("Manager"))
+	    {
+		e[i].assign(name,id,des,yoe,bp,0.4*bp,0.1*bp,lic,0.08*bp,nhw,0);
+		e[i].manager();
+	    }
+	    else
+	    {
+		e[i].assign(name,id,des,yoe,bp,0.4*bp,0.1*bp,lic,0.08*bp,nhw,0);
+		e[i].other();
+	    }
+	    e[i].display();
+	}
+ 
+   }
+}
+	    
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1b##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1b#[00m$ java Employee
+Enter no. of employees
+2
+Enter name
+Ram
+Enter id
+10
+Enter designation
+Manager
+Enter years of experience
+20
+Enter basic pay
+200000.0
+Enter lic
+0.0
+Enter no. of hours worked if intern otherwise 0
+0
+Ram 10 Manager 20
+200000.0 80000.0 20000.0 0.0 16000.0  0
+300000.0 16000.0 284000.0
+Enter name
+Kaushik
+Enter id
+100
+Enter designation
+Intern
+Enter years of experience
+2
+Enter basic pay
+15000.0
+Enter lic
+2500.0
+Enter no. of hours worked if intern otherwise 0
+48
+Enter hourly wage
+100
+Kaushik 100 Intern 2
+15000.0 2000.0 1000.0 2500.0 500.0  48
+7800.0 3000.0 4800.0
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1b##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1b#[00m$ exit
+exit
+
+Script done on 2018-08-06 19:04:36+0530

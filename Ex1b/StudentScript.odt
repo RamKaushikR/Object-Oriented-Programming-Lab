@@ -1,0 +1,131 @@
+﻿
+4.Write a java program to create a class named ‘Student’ 
+with name, id, dept, 3 marks as data members. Write 
+function to assign the inputs, calculate grade, display 
+and search. Perform these operations for ‘n’ number of 
+students. [Search using id and dept – use method overloading] 
+
+Script started on 2018-08-06 18:38:26+0530
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1b##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1b#[00m$ cat Student.java
+import java.util.Scanner;
+class Stu
+{
+    int id;
+    String name,dept;
+    float avg;
+    int[] mark = new int[3];
+    void assign(int id, int[] mark, String name, String dept)
+    {
+	int s=0;
+	this.id=id;
+	for(int i=0;i<3;i++)
+	{
+	    this.mark[i]=mark[i];
+	    s+=mark[i];
+	}
+	this.name=name;
+	this.dept=dept;
+	avg=(float) s/3;
+    }
+    boolean search(int id)
+    {
+	if(this.id==id)
+	    return true;
+	return false;
+    }
+    boolean search(String dept)
+    {
+	if((this.dept).equals(dept))
+	    return true;
+	return false;
+    }
+    void display()
+    {
+	System.out.println(id+" "+name+" "+dept+" "+mark[0]+" "+mark[1]+" "+mark[2]+" "+avg);
+    }
+}
+class Student
+{
+    static int id,mark[];
+    static String name,dept;
+    public static void main(String[] args)
+    {
+	Scanner in=new Scanner(System.in);
+	Stu[] s;
+	int n;
+	System.out.println("Enter no. of students");
+	n=in.nextInt();
+	s=new Stu[n];
+	for(int i=0;i<n;i++)
+	{
+
+	    System.out.println("Enter the id");
+	    s[i]=new Stu();
+	    id=in.nextInt();
+	    mark=new int[3];
+	    System.out.println("Enter the name");
+	    name=in.next();
+	    System.out.println("Enter the department");
+	    dept=in.next();
+	    System.out.println("Enter the marks");
+	    for(int j=0;j<3;j++)
+		mark[j]=in.nextInt();
+	    s[i].assign(id,mark,name,dept);
+	    int q;
+	    String d;
+	    System.out.println("Enter id & dept to search");
+	    q=in.nextInt();
+	    d=in.next();
+	    boolean ins,sts;
+	    ins=s[i].search(q);
+	    sts=s[i].search(d);
+	    s[i].display();
+	    System.out.println(ins+" "+sts);
+	}
+    }
+}
+	    
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1b##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1b#[00m$ java Student
+Enter no. of students
+3
+Enter the id
+100
+Enter the name
+Ram
+Enter the department
+CSE
+Enter the marks
+100 98 97
+Enter id & dept to search
+100 CSE
+100 Ram CSE 100 98 97 98.333336
+true true
+Enter the id
+123
+Enter the name
+Kaushik
+Enter the department
+ECE
+Enter the marks
+90 80 70
+Enter id & dept to search
+123 CSE
+123 Kaushik ECE 90 80 70 80.0
+true false
+Enter the id
+145
+Enter the name
+RK
+Enter the department
+CSE
+Enter the marks
+100 100 90
+Enter id & dept to search
+
+144 CSE
+145 RK CSE 100 100 90 96.666664
+false true
+#]0;ram@ram-kaushik: ~/OOP Programs/Ex1b##[01;32mram@ram-kaushik#[00m:#[01;34m~/OOP Programs/Ex1b#[00m$ exit
+exit
+
+Script done on 2018-08-06 18:40:02+0530
